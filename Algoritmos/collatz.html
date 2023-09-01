@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Conjetura de Collatz</title>
+	<link rel="stylesheet" type="text/css" href="estilosalg.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;1,400&display=swap" rel="stylesheet">
+		
+	</script>
+</head>
+<body>
+
+<div class="menu">
+	<nav>
+		<ul>
+			<li><a href="collatz.html">Conjetura de Collatz </a></li>
+			<li><a href="Kaprekar.html">Constante de Kaprekar</a></li>
+			<li><a href="rusa.html">Multiplicación Rusa</a></li>
+			<li><a href="egipcia.html">Multiplicación Egipcia</a></li>
+		</ul>
+	</nav>
+</div>
+
+<h1><center>Conjetura de Collatz</center></h1>
+
+<label for="numero">Ingresa un numero entero:</label>
+<input type="number" name="numero" id="numero">
+<button onclick="collatz()">Calcular</button>
+<p id="resultado"></p>
+
+<script>
+	
+	function collatz() {
+		const numeroInput = document.getElementById("numero");
+		const resultadoElement = document.getElementById("resultado");
+
+		const numero=parseInt(numeroInput.value);
+		if (isNaN(numero)|| numero <=0)  {
+			resultadoElement.textContent="ingresa un numero entero";
+			return
+		}
+
+		let num=numero;
+		let secuencia=[num];
+
+		while (num !==1)
+		{
+			if (num %2 ===0) {
+				num/=2;
+			}else {
+				num = (num*3)+1;
+			}
+			secuencia.push(num);
+		}
+
+		const secuenciaText=secuencia.join("<br>");
+		resultadoElement.innerHTML=`secuencia: ${secuenciaText}`;
+		
+	}
+</script>
+</body>
+</html>

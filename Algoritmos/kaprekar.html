@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Conjetura de Collatz</title>
+	<link rel="stylesheet" type="text/css" href="estilosalg.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;1,400&display=swap" rel="stylesheet">
+		
+	</script>
+</head>
+<body>
+
+<div class="menu">
+	<nav>
+		<ul>
+			<li><a href="collatz.html">Conjetura de Collatz </a></li>
+			<li><a href="kaprekar.html">Constante de Kaprekar</a></li>
+			<li><a href="rusa.html">Multiplicación Rusa</a></li>
+			<li><a href="egipcia.html">Multiplicación Egipcia</a></li>
+		</ul>
+	</nav>
+</div>
+
+<h1><center>Constante de Kaprekar</center></h1>
+
+<p>ingresa un número de 4 dígitos</p>
+<input type="number" name="numero" id="numero">
+<button onclick="calcular()">Calcular</button>
+<p id="resultado"></p>
+
+<script>
+	
+function kaprekar(number){
+
+	let cadena=number.toString().padStart(4, '0');
+
+	let numeros=cadena.split('').map(Number);
+	let ascendente=[...numeros].sort((a,b)=> a-b);
+	let descendete=[...numeros].sort((a,b)=>b-a);
+
+	let mayor=parseInt(descendete.join(''));
+	let menor=parseInt(ascendente.join(''));
+
+	let resta=mayor-menor; 
+
+	document.getElementById('resultado').innerHTML+= `${mayor} - ${menor} = ${resta}<br>`;
+
+	if (resta===6174) {
+		return resta;
+	}else {
+		return kaprekar(resta);
+	}
+}
+
+function calcular(){
+	let numero=parseInt(document.getElementById('numero').value);
+	document.getElementById('resultado').innerHTML='';
+	kaprekar(numero);
+}
+
+</script>
+</body>
+</html>

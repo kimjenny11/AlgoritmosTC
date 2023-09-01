@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Multiplicación Egipcia</title>
+	<link rel="stylesheet" type="text/css" href="estilosalg.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com"> 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="menu">
+	<nav>
+		<ul>
+			<li><a href="collatz.html">Conjetura de Collatz </a></li>
+			<li><a href="kaprekar.html">Constante de Kaprekar</a></li>
+			<li><a href="rusa.html">Multiplicación Rusa</a></li>
+			<li><a href="egipcia.html">Multiplicación Egipcia</a></li>
+		</ul>
+	</nav>
+</div>
+
+<h1 style="text-align: center;">Multiplicación Egipcia</h1>
+
+<p>Ingresa un número entero</p>
+<input type="number" id="numero1">
+<p>Ingresa un número entero</p>
+<input type="number" id="numero2">
+<button onclick="calcular()">Calcular</button>
+<p id="resultado"></p>
+
+<script>
+function egipcia(a, b) {
+	let result = 0;
+
+	while (a > 0) {
+		if (a % 2 !== 0) {
+			result += b;
+		}
+		a = Math.floor(a / 2);
+		b *= 2;
+	}
+
+	return result;
+}
+
+function calcular() {
+	const numero1 = parseInt(document.getElementById("numero1").value);
+	const numero2 = parseInt(document.getElementById("numero2").value);
+	const resultado = egipcia(numero1, numero2);
+	document.getElementById("resultado").innerHTML = `El resultado es: ${resultado}`;
+}
+</script>
+</body>
+</html>
